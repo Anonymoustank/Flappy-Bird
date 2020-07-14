@@ -4,6 +4,9 @@ from pymunk.pyglet_util import DrawOptions
 from pyglet.window import key, mouse
 import time
 import Moving_Objects
+from pyglet.gl import *
+glEnable(GL_TEXTURE_2D)
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST)
 
 options = DrawOptions()
 window = pyglet.window.Window(240, 360, "Game", resizable = False)
@@ -18,6 +21,9 @@ last_click_time = time.perf_counter()
 def on_draw():
     window.clear()
     space.debug_draw(options)
+    x, y = Moving_Objects.body.position
+    Moving_Objects.rocket.position = x - 25, y - 25
+    Moving_Objects.rocket.draw()
 
 def refresh(time):
     space.step(time)
