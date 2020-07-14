@@ -14,7 +14,9 @@ window.set_mouse_visible(False)
 space = pymunk.Space()
 space.gravity = 0, -1000
 
-space.add(Moving_Objects.body, Moving_Objects.player, Moving_Objects.lower_body, Moving_Objects.lower_pipe, Moving_Objects.upper_body, Moving_Objects.upper_pipe)
+for i in Moving_Objects.space_list:
+    space.add(i)
+
 last_click_time = time.perf_counter()
 
 @window.event
@@ -22,7 +24,7 @@ def on_draw():
     window.clear()
     space.debug_draw(options)
     x, y = Moving_Objects.body.position
-    Moving_Objects.rocket.position = x - 25, y - 25
+    Moving_Objects.rocket.position = x - 25, y - 10
     Moving_Objects.rocket.draw()
 
 def refresh(time):
