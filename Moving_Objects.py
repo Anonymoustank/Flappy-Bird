@@ -28,4 +28,12 @@ rocket = pyglet.resource.image("Rocket.png")
 rocket.width, rocket.height = 50, 50
 rocket = pyglet.sprite.Sprite(rocket)
 
+lower_brick = pyglet.resource.image("Brick.PNG")
+lower_brick.width, lower_brick.height = 30, 200
+lower_brick = pyglet.sprite.Sprite(lower_brick)
+
+upper_brick = pyglet.resource.image("Brick.PNG")
+upper_brick.width, upper_brick.height = 30, 200
+upper_brick = pyglet.sprite.Sprite(upper_brick)
+
 space_list = [body, player, upper_player, lower_body, lower_pipe, upper_body, upper_pipe]
