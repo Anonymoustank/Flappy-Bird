@@ -44,3 +44,17 @@ fire_gif.width, fire_gif.height = 10, 10
 bin = pyglet.image.atlas.TextureBin()
 fire_gif.add_to_texture_bin(bin)
 fire = pyglet.sprite.Sprite(fire_gif)
+
+sky1 = pyglet.resource.image("Images/Sky1.jpg")
+sky1 = pyglet.sprite.Sprite(sky1)
+sky1.position = 0, 0
+
+sky2 = pyglet.resource.image("Images/Sky2.jpg")
+sky2 = pyglet.sprite.Sprite(sky2)
+sky2.position = (sky2.width, 0)
+
+sky3 = pyglet.resource.image("Images/Sky3.jpg")
+sky3 = pyglet.sprite.Sprite(sky3)
+sky3.position = (2 * sky2.width, 0)
+
+sky_list = [sky1, sky2, sky3]

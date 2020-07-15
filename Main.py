@@ -19,6 +19,9 @@ for i in Moving_Objects.space_list:
 def on_draw():
     window.clear()
     if dead == False:
+        for i in Moving_Objects.sky_list:
+            i.draw()
+        Moving_Objects.sky1.draw()
         x, y = Moving_Objects.body.position
         Moving_Objects.rocket.position = x - 25, y - 10
         Moving_Objects.rocket.draw()
@@ -56,13 +59,17 @@ def refresh(time):
     Moving_Objects.upper_body.position = x - 2, y
     if x < -15:
         Moving_Objects.upper_body.position = 260, y
+    for i in Moving_Objects.sky_list:
+        x, y = i.position
+        i.position = x - 5, y
+
 
 @window.event
 def on_mouse_press(x, y, button, modifiers):
     global last_click_time
-    if abs(last_click_time - time.perf_counter()) >= 0.3:
+    if abs(last_click_time - time.perf_counter()) >= 0.2:
         x, y = Moving_Objects.body.position
-        Moving_Objects.body.apply_force_at_local_point((0, 40000), (0, 40000))
+        Moving_Objects.body.apply_force_at_local_point((0, 30000), (0, 30000))
         last_click_time = time.perf_counter()
 
 if __name__ == "__main__":
