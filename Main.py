@@ -54,16 +54,17 @@ def refresh(time):
     for i in Moving_Objects.wall_list:
         if len(Moving_Objects.player.shapes_collide(i).points) > 0 or len(Moving_Objects.upper_player.shapes_collide(i).points) > 0:
             dead = True
-    x, y = Moving_Objects.lower_body.position
-    Moving_Objects.lower_body.position = x - 2, y
-    if x < -15:
-        Moving_Objects.lower_body.position = 260, random.randint(-10, 20)
     x, y = Moving_Objects.upper_body.position
     if rocket_y > 400 and x == rocket_x:
         dead = True
     Moving_Objects.upper_body.position = x - 2, y
+    random_position = random.randint(300, 450)
     if x < -15:
-        Moving_Objects.upper_body.position = 260, random.randint(340, 370)
+        Moving_Objects.upper_body.position = 260, random_position
+    x, y = Moving_Objects.lower_body.position
+    Moving_Objects.lower_body.position = x - 2, y
+    if x < -15:
+        Moving_Objects.lower_body.position = 260, random_position - random.randint(310, 360)
     for i in Moving_Objects.sky_list:
         x, y = i.position
         i.position = x - 20, y
