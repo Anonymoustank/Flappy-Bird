@@ -28,6 +28,11 @@ def on_draw():
         x, y = Moving_Objects.upper_body.position
         Moving_Objects.upper_brick.position = x - 14, y - 100
         Moving_Objects.upper_brick.draw()
+        x, y = Moving_Objects.body.velocity
+        if y > 0:
+            x, y = Moving_Objects.body.position
+            Moving_Objects.fire.position = x - 12, y - 30
+            Moving_Objects.fire.draw()
     else:
         label = pyglet.text.Label('Game Over', font_name='Times New Roman', font_size=24, x=window.width//2, y=window.height//2, anchor_x='center', anchor_y='center')
         label.draw()
@@ -57,7 +62,7 @@ def on_mouse_press(x, y, button, modifiers):
     global last_click_time
     if abs(last_click_time - time.perf_counter()) >= 0.3:
         x, y = Moving_Objects.body.position
-        Moving_Objects.body.apply_force_at_local_point((0, 50000 - y), (0, 50000 - y))
+        Moving_Objects.body.apply_force_at_local_point((0, 40000), (0, 40000))
         last_click_time = time.perf_counter()
 
 if __name__ == "__main__":

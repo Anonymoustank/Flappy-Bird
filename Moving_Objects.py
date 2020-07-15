@@ -38,3 +38,9 @@ upper_brick = pyglet.sprite.Sprite(upper_brick)
 
 space_list = [body, player, upper_player, lower_body, lower_pipe, upper_body, upper_pipe]
 wall_list = [lower_pipe, upper_pipe]
+
+fire_gif = pyglet.image.load_animation('Images/Fire.gif')
+fire_gif.width, fire_gif.height = 10, 10
+bin = pyglet.image.atlas.TextureBin()
+fire_gif.add_to_texture_bin(bin)
+fire = pyglet.sprite.Sprite(fire_gif)
