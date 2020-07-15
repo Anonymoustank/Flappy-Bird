@@ -14,6 +14,7 @@ dead = False
 last_click_time = time.perf_counter()
 for i in Moving_Objects.space_list:
     space.add(i)
+score = 0
 
 @window.event
 def on_draw():
@@ -35,12 +36,16 @@ def on_draw():
             x, y = Moving_Objects.body.position
             Moving_Objects.fire.position = x - 12, y - 30
             Moving_Objects.fire.draw()
-    else:
-        label = pyglet.text.Label('Game Over', font_name='Times New Roman', font_size=24, x=window.width//2, y=window.height//2, anchor_x='center', anchor_y='center')
+        label = pyglet.text.Label('Score: ' + str(score), font_name='Times New Roman', font_size = 16, x = 200, y = 350, anchor_x='center', anchor_y='center', color = (0, 0, 0, 255))
         label.draw()
+    else:
+        label = pyglet.text.Label('Game Over', font_name='Times New Roman', font_size=24, x=window.width//2, y=window.height//2 + 50, anchor_x='center', anchor_y='center')
+        label.draw()
+        score_label = pyglet.text.Label('Final Score: ' + str(score), font_name='Times New Roman', font_size=24, x=window.width//2, y=window.height//2 - 50, anchor_x='center', anchor_y='center')
+        score_label.draw()
 
 def refresh(time):
-    global dead
+    global dead, score
     space.step(time)
     rocket_x, rocket_y = Moving_Objects.rocket.position
     if rocket_y <= -50:
@@ -60,15 +65,19 @@ def refresh(time):
         Moving_Objects.upper_body.position = 260, y
     for i in Moving_Objects.sky_list:
         x, y = i.position
-        i.position = x - 5, y
+        i.position = x - 20, y
         if x + i.width/2 <= 0:
             i.position = x + (1.5 * i.width), y
+    x, y = Moving_Objects.upper_body.position
+    body_x, body_y = Moving_Objects.body.position
+    if x == body_x and dead == False:
+        score += 1
 
 
 @window.event
 def on_mouse_press(x, y, button, modifiers):
     global last_click_time
-    if abs(last_click_time - time.perf_counter()) >= 0.2:
+    if abs(last_click_time - time.perf_counter()) >= 0.1:
         x, y = Moving_Objects.body.position
         Moving_Objects.body.apply_force_at_local_point((0, 30000), (0, 30000))
         last_click_time = time.perf_counter()
