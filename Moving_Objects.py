@@ -51,10 +51,10 @@ sky1.position = 0, 0
 
 sky2 = pyglet.resource.image("Images/Sky2.jpg")
 sky2 = pyglet.sprite.Sprite(sky2)
-sky2.position = (sky2.width, 0)
+sky2.position = 0.5 * sky2.width, 0
 
 sky3 = pyglet.resource.image("Images/Sky3.jpg")
 sky3 = pyglet.sprite.Sprite(sky3)
-sky3.position = (2 * sky2.width, 0)
+sky3.position = 1 * sky2.width, 0
 
 sky_list = [sky1, sky2, sky3]

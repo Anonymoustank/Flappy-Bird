@@ -21,7 +21,6 @@ def on_draw():
     if dead == False:
         for i in Moving_Objects.sky_list:
             i.draw()
-        Moving_Objects.sky1.draw()
         x, y = Moving_Objects.body.position
         Moving_Objects.rocket.position = x - 25, y - 10
         Moving_Objects.rocket.draw()
@@ -62,6 +61,8 @@ def refresh(time):
     for i in Moving_Objects.sky_list:
         x, y = i.position
         i.position = x - 5, y
+        if x + i.width/2 <= 0:
+            i.position = x + (1.5 * i.width), y
 
 
 @window.event
