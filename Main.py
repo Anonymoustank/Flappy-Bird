@@ -4,6 +4,7 @@ from pymunk.pyglet_util import DrawOptions
 from pyglet.window import key, mouse
 import time
 import Moving_Objects
+import random
 
 options = DrawOptions()
 window = pyglet.window.Window(240, 360, "Game", resizable = False)
@@ -56,13 +57,13 @@ def refresh(time):
     x, y = Moving_Objects.lower_body.position
     Moving_Objects.lower_body.position = x - 2, y
     if x < -15:
-        Moving_Objects.lower_body.position = 260, y
+        Moving_Objects.lower_body.position = 260, random.randint(-10, 20)
     x, y = Moving_Objects.upper_body.position
     if rocket_y > 400 and x == rocket_x:
         dead = True
     Moving_Objects.upper_body.position = x - 2, y
     if x < -15:
-        Moving_Objects.upper_body.position = 260, y
+        Moving_Objects.upper_body.position = 260, random.randint(340, 370)
     for i in Moving_Objects.sky_list:
         x, y = i.position
         i.position = x - 20, y

@@ -1,5 +1,6 @@
 import pymunk
 import pyglet
+import random
 
 space_list = []
 wall_list = []
@@ -17,11 +18,11 @@ def zero_gravity(body, gravity, damping, dt):
 body.velocity_func = zero_gravity
 
 lower_body = pymunk.Body(1, 100, pymunk.Body.KINEMATIC)
-lower_body.position = 240, 0
+lower_body.position = 240, random.randint(-10, 20)
 lower_pipe = pymunk.Poly.create_box(lower_body, size=(30, 200))
 
 upper_body = pymunk.Body(1, 100, pymunk.Body.KINEMATIC)
-upper_body.position = 240, 360
+upper_body.position = 240, random.randint(340, 370)
 upper_pipe = pymunk.Poly.create_box(upper_body, size=(30, 200))
 
 rocket = pyglet.resource.image("Images/Rocket.png")
