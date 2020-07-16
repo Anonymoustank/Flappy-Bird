@@ -58,7 +58,7 @@ def refresh(time):
     if rocket_y > 400 and x == rocket_x:
         dead = True
     Moving_Objects.upper_body.position = x - 2, y
-    random_position = random.randint(300, 450)
+    random_position = random.randint(300, 400)
     if x < -15:
         Moving_Objects.upper_body.position = 260, random_position
     x, y = Moving_Objects.lower_body.position
